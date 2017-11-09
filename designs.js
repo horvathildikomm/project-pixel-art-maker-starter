@@ -1,16 +1,17 @@
-// Select color input
-// Select size input
 
-// When size is submitted by the user, call makeGrid()
+
 makeGrid(10,10);
 
-function makeGrid(h,w) {
+// This function appends a table to the pixel_canvas element.
+// The number of the created rows equals the gridHeight argument.
+// The number of the created columns equals the gridWidth argument.
+function makeGrid(gridHeight,gridWidth) {
   $('#pixel_canvas').empty();
-  for(let i = 0 ; i < h; ++i){
+  for(let i = 0 ; i < gridHeight; ++i){
     $('#pixel_canvas').append("<tr> </tr>")
   }
-  for(let j = 0 ; j < w ; ++j){
-  $('tr').append("<td> </td>")
+  for(let j = 0 ; j < gridWidth ; ++j){
+    $('tr').append("<td> </td>")
   }
 
   $('td').click(function(){
@@ -19,9 +20,10 @@ function makeGrid(h,w) {
   });
 }
 
+// When size is submitted by the user, call makeGrid()
 $('#sizePicker').submit(function(e){
   e.preventDefault();
-  const h = $('#input_height').val();
-  const w = $('#input_width').val();
-  makeGrid(h,w);
+  const gridHeight = $('#input_height').val();
+  const gridWidth = $('#input_width').val();
+  makeGrid(gridHeight,gridWidth);
 });
